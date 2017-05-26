@@ -16,7 +16,7 @@ export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID; export AWS_SECRET_KEY_ID=$AWS_SECRE
 `docker build --build-arg AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID> --build-arg AWS_SECRET_KEY_ID=<AWS_SECRET_KEY_ID> --build-arg AWS_REGION_NAME=<AWS_REGION_NAME> . -t brocas`
 
 #### One-off run
-`docker run -d --name brocas-area -p 5000:5001 brocas`
+`docker run -d --name brocas-area -p 5002:5000 brocas`
 
 
 ## Usage
