@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+import base64
 import os
 from flask import Flask, jsonify, request
 from voice_synthesizer import VoiceSynthesizer
@@ -20,7 +21,7 @@ def say():
     if not request.json or not 'text' in request.json:
         return jsonify({'error': 'Missing text'}), 400
 
-    voice = vs.synthesize(request.json['text'])
+    voice = base64.b64encode(vs.synthesize(request.json['text']))
     return jsonify({'sound': voice});
 
 if __name__ == "__main__":

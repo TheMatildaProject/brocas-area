@@ -1,5 +1,4 @@
 import sys, traceback
-import base64
 from boto3 import Session
 from botocore.exceptions import BotoCoreError, ClientError
 from contextlib import closing
@@ -34,7 +33,7 @@ class VoiceSynthesizer(object):
             # at the end of the with statement's scope.
             with closing(response["AudioStream"]) as stream:
                 data = stream.read()
-                return base64.b64encode(data)
+                return data
 
         else:
             # The response didn't contain audio data
