@@ -13,14 +13,14 @@ vs = VoiceSynthesizer(
     aws_access_key_id=aws_access_key_id, 
     aws_secret_access_key=aws_secret_key_id)
 
-app = Flask(__name__)
+app = Flask(__name__) 
 
 @app.route('/', methods=['POST'])
 def say():
     if not request.json or not 'text' in request.json:
         return jsonify({'error': 'Missing text'}), 400
 
-    voice = vs.synthesize('text')
+    voice = vs.synthesize(request.json['text'])
     return jsonify({'sound': voice});
 
 if __name__ == "__main__":
