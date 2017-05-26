@@ -24,4 +24,4 @@ def say():
     return jsonify({'sound': voice});
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
