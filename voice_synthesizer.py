@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-import pygame, StringIO
 import sys, traceback
 import base64
 from boto3 import Session
@@ -8,16 +6,12 @@ from contextlib import closing
 
 class VoiceSynthesizer(object):
     def __init__(self, aws_access_key_id, aws_secret_access_key, volume=1, region_name='us-west-2'):
-        pygame.mixer.init()
         self._volume = volume
-        session = Session(profile_name="default", region_name=region_name, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
+        session = Session(region_name=region_name, aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
         self.__polly = session.client("polly")
  
     def _getVolume(self):
         return self._volume
- 
-    #def say(self, text):
-    #    self._synthesize(text)
  
     def synthesize(self, text):
         # Implementation specific synthesis 
@@ -41,12 +35,6 @@ class VoiceSynthesizer(object):
             with closing(response["AudioStream"]) as stream:
                 data = stream.read()
                 return base64.b64encode(data)
-                #filelike = StringIO.StringIO(data) # Gives you a file-like object
-                #sound = pygame.mixer.Sound(file=filelike)
-                #sound.set_volume(self._getVolume())
-                #sound.play() 
-                #while pygame.mixer.get_busy() == True:
-                #    continue
 
         else:
             # The response didn't contain audio data

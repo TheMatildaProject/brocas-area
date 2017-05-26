@@ -1,10 +1,11 @@
+#! /usr/bin/env python
 import os
 from flask import Flask, jsonify, request
 from voice_synthesizer import VoiceSynthesizer
 
-aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID') #AKIAINIGFWBBXXHOP3SA
-aws_secret_key_id = os.getenv('AWS_SECRET_KEY_ID') #Dxfgs0j8g6RV5hKabsW+Q3tyIJS3/pkj11irwhk5
-aws_region_name = os.getenv('AWS_REGION_NAME') # us-west-2
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+aws_secret_key_id = os.getenv('AWS_SECRET_KEY_ID')
+aws_region_name = os.getenv('AWS_REGION_NAME')
 
 vs = VoiceSynthesizer(
     volume=1, 

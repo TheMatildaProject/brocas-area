@@ -4,8 +4,22 @@ Broca's area or the Broca area /broʊˈkɑː/ or /ˈbroʊkə/ is a region in the
 Or in a more generic and boring definition, this is a Python micro-service capable of receiving text and turn into speech by using AWS Polly, the artefact generated is a json response with base64 audio embeded.
 
 
-## Usage Example
+## Installation
+### Old School
+```
+pip install -r requirements.txt
+export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID; export AWS_SECRET_KEY_ID=$AWS_SECRET_KEY_ID; export AWS_REGION_NAME=$AWS_REGION_NAME; export FLASK_APP=/app/app.py; flask run --host=0.0.0.0 --port=5001
+```
 
+### Docker
+#### Build
+`docker build --build-arg AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID> --build-arg AWS_SECRET_KEY_ID=<AWS_SECRET_KEY_ID> --build-arg AWS_REGION_NAME=<AWS_REGION_NAME> . -t brocas`
+
+#### One-off run
+`docker run -d --name brocas-area -p 5000:5001 brocas`
+
+
+## Usage Example
 ### Request Example
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"text":"Turn this into speech, please!"}' http://localhost:5001
