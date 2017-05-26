@@ -19,7 +19,7 @@ export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID; export AWS_SECRET_KEY_ID=$AWS_SECRE
 `docker run -d --name brocas-area -p 5000:5001 brocas`
 
 
-## Usage Example
+## Usage
 ### Request Example
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"text":"Turn this into speech, please!"}' http://localhost:5001
